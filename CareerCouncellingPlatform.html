@@ -3,55 +3,305 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Career Portal</title>
     <style>
-         .n1{
-            text-align: center;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-        #d1{
-            height: 100px;
-            width: auto;
+        
+        header {
             background-image: url("https://pattemdigital.com/production/wp-content/uploads/2024/07/banner-iamge-1-1024x411.webp");
             background-size: cover;
-            padding: 30px;
-            margin: auto;
+            padding: 30px 0;
+            width: 100%;
         }
-        main{
+        
+        header h1 {
+            color: navy;
+            text-align: center;
+            margin: 0;
+        }
+       
+        nav {
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        nav a {
+            margin: 0 15px;
+            color: whitesmoke;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        nav a:hover {
+            text-decoration: underline;
+        }
+        body{
             background: linear-gradient(rgb(232, 240, 243), #cce1ea);
-            margin: auto;
-            padding: 20px;
         }
-        footer{
-            height: 80px;
-            width: auto;
+        main {
+           
+           
+            flex: 1;
+            display: flex;
+            
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .main-content {
+            flex: 3;
+            padding: 20px;
+           
+        }
+        
+        .auth-container {
+            flex: 1;
+            padding: 20px;
+            max-width: 350px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-left: 20px;
+            height: fit-content;
+        }
+        
+        .auth-container h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #34495e;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        .auth-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .auth-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .toggle-form {
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .toggle-form a {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .toggle-form a:hover {
+            text-decoration: underline;
+        }
+        #box {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+        
+        #box > div {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+       
+        
+        #box > div img {
+            width: 100%;
+            height: 100%;
+            border-radius: 5%;
+            object-fit: cover;
+            margin: 0;
+            border: 3px solid #f5f5f5;
+        }
+        
+        footer {
             background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnf9QEesUfay1_fRyQQkjcvWlzKa6k4o6TpA&s");
             background-size: cover;
-            margin: auto;
-            padding: 30px;
-
+            padding: 30px 0;
+            width: 100%;
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        footer a {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+      
+        #signupForm {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div id="d1">
-        <header><h1 style="color:navy; text-align: center;">Make Your Career</h1></header>
-        <nav class="n1">
+    <header>
+        <h1>Make Your Career Bright</h1>
+        <nav>
             <a href="Home.html">Home</a>
             <a href="BookSession.html">Book Session</a>
             <a href="Library2.html">Library</a>
             <a href="JobBoard.html">Job Board</a>
         </nav>
+    </header>
+    
+    <main>
+        <div class="main-content">
+            <h1 style="color: darkblue; font-style: inherit;">Welcome to Career Portal</h1>
+            <h2 style="color: cadetblue; font-style: italic;">"Passion + Purpose = A Career You Love."</h2>
+            <p>Discover your dream career with our comprehensive resources:</p>
+            <ul>
+                <li>Book one-on-one career coaching sessions</li>
+                <li>Access our extensive career development library</li>
+                <li>Browse the latest job opportunities</li>
+                <li>Get personalized career recommendations</li>
+            </ul>
+            <h2>Featured Jobs</h2>
+            <p>Check out our job board for the latest opportunities in your field.</p>
         </div>
-        <main>
-            <h1>
-                1
-            </h1>
-        </main>
+        
+        <div class="auth-container">
+          
+            <form id="loginForm" class="auth-form">
+                <h2>Login</h2>
+                <div class="form-group">
+                    <label for="username">Email</label>
+                    <input type="email" id="username" name="username" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="auth-btn">Log In</button>
+                <div class="toggle-form">
+                    <span>Don't have an account? </span>
+                    <a href="#" id="showSignup">Sign up</a>
+                </div>
+            </form>
+            
+           
+            <form id="signupForm" class="auth-form">
+                <h2>Sign Up</h2>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" name="password" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                </div>
+                <button type="submit" class="auth-btn">Create Account</button>
+                <div class="toggle-form">
+                    <span>Already have an account? </span>
+                    <a href="#" id="showLogin">Log in</a>
+                </div>
+            </form>
+        </div>
+       
+    </main>
+    <div id="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
 
-        <footer style="text-align: center;">
-            <a href="Contact Information">Contact Information</a>
-            <a href="facebook">facebook</a>
-            <a href="Twitter">Twitter</a>
-        </footer>
+    <footer>
+        <a href="Contact Information.html">Contact Us</a>
+       
+    </footer>
+
+    <script>
+       
+        document.getElementById('showSignup').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('signupForm').style.display = 'block';
+        });
+        
+        document.getElementById('showLogin').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('signupForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
+        });
+        
+       
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Login functionality would be implemented here');
+           
+        });
+        
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+            
+            alert('Account creation would be implemented here');
+           
+        });
+    </script>
 </body>
 </html>
