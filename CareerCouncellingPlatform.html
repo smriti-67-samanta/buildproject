@@ -43,7 +43,7 @@
             text-decoration: underline;
         }
         body{
-            background: linear-gradient(rgb(232, 240, 243), #cce1ea);
+            background: linear-gradient(rgb(232, 240, 243), #9dd1e7);
         }
         main {
            
@@ -62,71 +62,7 @@
            
         }
         
-        .auth-container {
-            flex: 1;
-            padding: 20px;
-            max-width: 350px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-left: 20px;
-            height: fit-content;
-        }
-        
-        .auth-container h2 {
-            text-align: center;
-            color: #2c3e50;
-            margin-bottom: 20px;
-        }
-        
-        .form-group {
-            margin-bottom: 15px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #34495e;
-        }
-        
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        
-        .auth-btn {
-            width: 100%;
-            padding: 10px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-        
-        .auth-btn:hover {
-            background-color: #2980b9;
-        }
-        
-        .toggle-form {
-            text-align: center;
-            margin-top: 15px;
-        }
-        
-        .toggle-form a {
-            color: #3498db;
-            text-decoration: none;
-            font-size: 14px;
-        }
-        
-        .toggle-form a:hover {
-            text-decoration: underline;
-        }
+       
         #box {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -177,19 +113,18 @@
         }
         
       
-        #signupForm {
-            display: none;
-        }
+      
     </style>
 </head>
 <body>
     <header>
         <h1>Make Your Career Bright</h1>
         <nav>
-            <a href="Home.html">Home</a>
+            <a href="Home2.html">Home</a>
             <a href="BookSession.html">Book Session</a>
             <a href="Library2.html">Library</a>
             <a href="JobBoard.html">Job Board</a>
+            <a href="SignUp.html">Log In</a>
         </nav>
     </header>
     
@@ -208,47 +143,7 @@
             <p>Check out our job board for the latest opportunities in your field.</p>
         </div>
         
-        <div class="auth-container">
-          
-            <form id="loginForm" class="auth-form">
-                <h2>Login</h2>
-                <div class="form-group">
-                    <label for="username">Email</label>
-                    <input type="email" id="username" name="username" placeholder="Enter your email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
-                </div>
-                <button type="submit" class="auth-btn">Log In</button>
-                <div class="toggle-form">
-                    <span>Don't have an account? </span>
-                    <a href="#" id="showSignup">Sign up</a>
-                </div>
-            </form>
-            
-           
-            <form id="signupForm" class="auth-form">
-                <h2>Sign Up</h2>
-                <div class="form-group">
-                    <label for="signupEmail">Email</label>
-                    <input type="email" id="signupEmail" name="email" placeholder="Enter your email" required>
-                </div>
-                <div class="form-group">
-                    <label for="signupPassword">Password</label>
-                    <input type="password" id="signupPassword" name="password" placeholder="Create a password" required>
-                </div>
-                <div class="form-group">
-                    <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
-                </div>
-                <button type="submit" class="auth-btn">Create Account</button>
-                <div class="toggle-form">
-                    <span>Already have an account? </span>
-                    <a href="#" id="showLogin">Log in</a>
-                </div>
-            </form>
-        </div>
+        
        
     </main>
     <div id="box">
@@ -268,40 +163,6 @@
        
     </footer>
 
-    <script>
-       
-        document.getElementById('showSignup').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('loginForm').style.display = 'none';
-            document.getElementById('signupForm').style.display = 'block';
-        });
-        
-        document.getElementById('showLogin').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('signupForm').style.display = 'none';
-            document.getElementById('loginForm').style.display = 'block';
-        });
-        
-       
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Login functionality would be implemented here');
-           
-        });
-        
-        document.getElementById('signupForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const password = document.getElementById('signupPassword').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            
-            if (password !== confirmPassword) {
-                alert('Passwords do not match');
-                return;
-            }
-            
-            alert('Account creation would be implemented here');
-           
-        });
-    </script>
+   
 </body>
 </html>
