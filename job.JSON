@@ -1,0 +1,193 @@
+{
+  "jobs": [
+    {
+      "id": 1,
+      "title": "Software Engineer",
+      "company": "Tech Solutions Inc.",
+      "location": "San Francisco, CA (Hybrid)",
+      "type": "Full-time",
+      "salary": "$95,000 - $130,000",
+      "description": "Develop and maintain software applications using modern technologies.",
+      "requirements": [
+        "Bachelor's in Computer Science or related field",
+        "3+ years of programming experience",
+        "Proficiency in JavaScript/TypeScript",
+        "Experience with React and Node.js"
+      ],
+      "posted": "2023-11-15",
+      "applyLink": "job-application.html?id=1"
+    },
+    {
+      "id": 2,
+      "title": "Marketing Coordinator",
+      "company": "Creative Marketing Group",
+      "location": "New York, NY (Remote)",
+      "type": "Full-time",
+      "salary": "$55,000 - $70,000",
+      "description": "Assist in developing and implementing marketing campaigns.",
+      "requirements": [
+        "Bachelor's in Marketing or related field",
+        "1-2 years of marketing experience",
+        "Strong communication skills",
+        "Social media management experience"
+      ],
+      "posted": "2023-11-10",
+      "applyLink": "job-application.html?id=2"
+    },
+    {
+      "id": 3,
+      "title": "Registered Nurse",
+      "company": "City General Hospital",
+      "location": "Chicago, IL",
+      "type": "Part-time",
+      "salary": "$35 - $45/hour",
+      "description": "Provide patient care in a fast-paced hospital environment.",
+      "requirements": [
+        "Active RN license",
+        "2+ years of nursing experience",
+        "BLS/ACLS certification",
+        "Excellent patient care skills"
+      ],
+      "posted": "2023-11-12",
+      "applyLink": "job-application.html?id=3"
+    },
+    {
+      "id": 4,
+      "title": "Graphic Designer",
+      "company": "Digital Creative Agency",
+      "location": "Austin, TX (Remote)",
+      "type": "Part-time",
+      "salary": "$25 - $40/hour",
+      "description": "Create visual content for digital and print media.",
+      "requirements": [
+        "Portfolio demonstrating design skills",
+        "Proficiency in Adobe Creative Suite",
+        "2+ years of design experience",
+        "Understanding of branding principles"
+      ],
+      "posted": "2023-11-08",
+      "applyLink": "job-application.html?id=4"
+    },
+    {
+      "id": 5,
+      "title": "Financial Analyst",
+      "company": "Global Finance Corp",
+      "location": "Boston, MA",
+      "type": "Full-time",
+      "salary": "$75,000 - $95,000",
+      "description": "Analyze financial data and prepare reports for management.",
+      "requirements": [
+        "Bachelor's in Finance or Accounting",
+        "3+ years of financial analysis experience",
+        "Advanced Excel skills",
+        "Knowledge of financial modeling"
+      ],
+      "posted": "2023-11-14",
+      "applyLink": "job-application.html?id=5"
+    },
+    {
+      "id": 6,
+      "title": "Customer Service Representative",
+      "company": "Service First Inc.",
+      "location": "Remote",
+      "type": "Part-time",
+      "salary": "$18 - $22/hour",
+      "description": "Assist customers with inquiries and resolve issues.",
+      "requirements": [
+        "High school diploma or equivalent",
+        "1+ year of customer service experience",
+        "Excellent communication skills",
+        "Basic computer proficiency"
+      ],
+      "posted": "2023-11-05",
+      "applyLink": "job-application.html?id=6"
+    },
+    {
+      "id": 7,
+      "title": "Mechanical Engineer",
+      "company": "Industrial Solutions Ltd",
+      "location": "Detroit, MI",
+      "type": "Full-time",
+      "salary": "$80,000 - $110,000",
+      "description": "Design and test mechanical devices and systems.",
+      "requirements": [
+        "Bachelor's in Mechanical Engineering",
+        "Professional Engineer license preferred",
+        "3+ years of engineering experience",
+        "CAD software proficiency"
+      ],
+      "posted": "2023-11-13",
+      "applyLink": "job-application.html?id=7"
+    },
+    {
+      "id": 8,
+      "title": "Retail Sales Associate",
+      "company": "Urban Fashion Outfitters",
+      "location": "Miami, FL",
+      "type": "Part-time",
+      "salary": "$15 - $18/hour",
+      "description": "Assist customers and maintain store appearance.",
+      "requirements": [
+        "Retail experience preferred",
+        "Friendly and outgoing personality",
+        "Ability to work weekends",
+        "Basic math skills"
+      ],
+      "posted": "2023-11-09",
+      "applyLink": "job-application.html?id=8"
+    },
+    {
+      "id": 9,
+      "title": "Human Resources Manager",
+      "company": "Corporate Solutions Group",
+      "location": "Seattle, WA (Hybrid)",
+      "type": "Full-time",
+      "salary": "$85,000 - $115,000",
+      "description": "Oversee HR operations and employee relations.",
+      "requirements": [
+        "Bachelor's in HR or related field",
+        "5+ years of HR experience",
+        "PHR/SPHR certification preferred",
+        "Knowledge of employment laws"
+      ],
+      "posted": "2023-11-11",
+      "applyLink": "job-application.html?id=9"
+    },
+    {
+      "id": 10,
+      "title": "Content Writer",
+      "company": "Digital Media Partners",
+      "location": "Remote",
+      "type": "Part-time",
+      "salary": "$20 - $35/hour",
+      "description": "Create engaging content for websites and blogs.",
+      "requirements": [
+        "2+ years of writing experience",
+        "Portfolio of published work",
+        "SEO knowledge preferred",
+        "Excellent grammar and research skills"
+      ],
+      "posted": "2023-11-07",
+      "applyLink": "job-application.html?id=10"
+    }
+  ],
+  "categories": [
+    "Technology",
+    "Healthcare",
+    "Finance",
+    "Marketing",
+    "Creative",
+    "Customer Service",
+    "Engineering",
+    "Retail",
+    "Human Resources",
+    "Writing"
+  ],
+  "jobTypes": [
+    "Full-time",
+    "Part-time",
+    "Contract",
+    "Internship",
+    "Temporary"
+  ]
+}
