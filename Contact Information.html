@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Career Guidance</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f5f7fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-image: url("https://www.shutterstock.com/image-photo/hand-show-icon-address-phone-600nw-2475999141.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+          
+        }
+        
+        .contact-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+        }
+        
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: block;
+            width: 100%;
+            font-weight: 600;
+        }
+        
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .contact-info {
+            margin-top: 30px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-container {
+                margin: 20px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-container">
+        <h1>Get Career Guidance</h1>
+        
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Full Name*</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address*</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            
+            <div class="form-group">
+                <label for="interest">Career Interest</label>
+                <select id="interest" name="interest">
+                    <option value="">Select an option</option>
+                    <option value="career-counseling">Career Counseling</option>
+                    <option value="resume-review">Resume Review</option>
+                    <option value="interview-prep">Interview Preparation</option>
+                    <option value="career-change">Career Change Guidance</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Your Message*</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+        
+        <div class="contact-info">
+            <h3>Other Ways to Reach Us</h3>
+            <p><strong>Email:</strong> support@careerguidance.com</p>
+            <p><strong>Phone:</strong> (123) 456-7890</p>
+           
+        </div>
+    </div>
+
+    
+</body>
+</html>
