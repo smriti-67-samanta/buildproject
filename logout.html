@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .logout-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .user-info {
+            margin-bottom: 1.5rem;
+        }
+        .user-email {
+            font-weight: bold;
+            color: #4285f4;
+        }
+        .logout-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+        .logout-btn:hover {
+            background-color: #c0392b;
+        }
+        .message {
+            padding: 0.75rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .success {
+            background-color: #e6f7ee;
+            color: #2e7d32;
+        }
+        .error {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+        .login-redirect {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+        }
+        .login-redirect a {
+            color: #4285f4;
+            text-decoration: none;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="logout-container">
+        <div class="user-info">
+            <h2>You're logged in as</h2>
+            <p class="user-email" id="user-email">Loading...</p>
+        </div>
+        <button id="logout-btn" class="logout-btn">Log Out</button>
+        <div id="logout-message" class="message"></div>
+        <div class="login-redirect">
+            <a href="SignUp.html">Return to Login</a>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-analytics.js";
+        import { 
+            getAuth, 
+            signOut,
+            onAuthStateChanged
+        } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-auth.js";
+
+       
+        const firebaseConfig = {
+            apiKey: "AIzaSyC9E7dm9p6el0dreVlmKlf7QHV3GPzFIbk",
+            authDomain: "authentication-453d8.firebaseapp.com",
+            projectId: "authentication-453d8",
+            storageBucket: "authentication-453d8.firebasestorage.app",
+            messagingSenderId: "606665206020",
+            appId: "1:606665206020:web:851e6c1671d584ca500851"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+      
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+              
+                document.getElementById('user-email').textContent = user.email;
+            } else {
+             
+                window.location.href = 'SignUp.html';
+            }
+        });
+
+        // Logout button functionality
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            const messageEl = document.getElementById('logout-message');
+            
+            signOut(auth)
+                .then(() => {
+                    // Sign-out successful
+                    messageEl.textContent = "You have been logged out successfully";
+                    messageEl.className = 'message success';
+                    
+                    // Redirect after short delay
+                    setTimeout(() => {
+                        window.location.href = 'SignUp.html';
+                    }, 1500);
+                })
+                .catch((error) => {
+                  
+                    messageEl.textContent = error.message;
+                    messageEl.className = 'message error';
+                });
+        });
+    </script>
+</body>
+</html>
