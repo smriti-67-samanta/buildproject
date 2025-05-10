@@ -10,7 +10,11 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         body {
-            background-color: #f5f5f5;
+            background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwj-FCkJZxCUZVUuPTUyhSVtfZk5fYSMBpVg&s") ;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             margin: 0;
             padding: 0;
             display: flex;
@@ -118,7 +122,7 @@
                 document.getElementById('user-email').textContent = user.email;
             } else {
              
-                window.location.href = 'SignUp.html';
+                window.location.href = 'Index.html';
             }
         });
 
@@ -134,7 +138,7 @@
                     
                     // Redirect after short delay
                     setTimeout(() => {
-                        window.location.href = 'SignUp.html';
+                        window.location.href = 'Index.html';
                     }, 1500);
                 })
                 .catch((error) => {
