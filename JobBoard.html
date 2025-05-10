@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Board</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+         header {
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGTecYz1I7BjwFUiWkt4YUbcPdBnVSGBcBlA&s");
+            background-size: cover;
+            background-position: center;
+            padding: 40px 0;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Add overlay for better text visibility */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 0;
+        }
+        
+        header h1 {
+            color: #ffffff;
+            text-align: center;
+            margin: 0;
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            letter-spacing: 1px;
+            padding-bottom: 10px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        /* Add subtle underline effect */
+        header h1::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #ffcc00;
+            margin: 10px auto 0;
+        }
+       
+        nav {
+            text-align: center;
+            margin-top: 20px;
+            position: relative;
+        }
+        
+        nav a {
+            margin: 0 20px;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        /* Hover effect */
+        nav a:hover {
+            color: #ffcc00;
+            background: rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+        }
+        
+        /* Active link indicator */
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: #ffcc00;
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 70%;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            nav a {
+                margin: 0 10px;
+                font-size: 0.9rem;
+                padding: 6px 8px;
+            }
+        }
+        
+        body {
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjKaheOIgoq8gkCDX2TNVJ11REU0HBMV0Gtw&s");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .job-board-header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+        
+        .job-filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .job-filters select, .job-filters input {
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        
+        .jobs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        
+        .job-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .job-title {
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        
+        .job-company {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .job-details {
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        
+        .job-details span {
+            display: inline-block;
+            margin-right: 15px;
+        }
+        
+        .job-description {
+            margin-bottom: 20px;
+            color: #34495e;
+            line-height: 1.5;
+        }
+        
+        .apply-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .apply-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        footer {
+            background-image: url("https://proventuseducation.com/uploads/blog/16-How-is-a-Biometric-Testing-Beneficial-for-tt.jpg");
+            background-size: cover;
+            background-position: center;
+           
+            padding: 40px 0;
+            width: 100%;
+            text-align: center;
+            margin-top: auto;
+            position: relative;
+            color: white;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Dark overlay for better readability */
+       
+
+        /* Content container */
+        .footer-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation links */
+        footer nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        footer a {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        /* Hover effect with animation */
+        footer a:hover {
+            color: #ffcc00;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Underline animation */
+        footer a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: #ffcc00;
+            transition: width 0.3s ease;
+        }
+
+        footer a:hover::after {
+            width: 70%;
+        }
+         @media (max-width: 768px) {
+            footer nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            footer a {
+                margin: 5px 0;
+            }
+        }
+        
+        .no-jobs {
+            text-align: center;
+            grid-column: 1 / -1;
+            padding: 40px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Make Your Career Bright</h1>
+        <nav>
+            <a href="Home2.html">Home</a>
+            <a href="BookSession.html">Book Session</a>
+            <a href="Library2.html">Library</a>
+            <a href="JobBoard.html">Job Board</a>
+            <a href="Contact Information.html">Contact Us</a>
+            <a href="logout.html">Log Out</a>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="job-board-header">
+            <h1>Job Opportunities</h1>
+            <p>Browse through our latest job listings and find your perfect match</p>
+        </div>
+        
+        <div class="job-filters">
+            <select id="job-type-filter">
+                <option value="">All Job Types</option>
+                <option value="Full-time">Full-time</option>
+                <option value="Part-time">Part-time</option>
+                <option value="Contract">Contract</option>
+                <option value="Internship">Internship</option>
+                <option value="Remote">Remote</option>
+            </select>
+            
+            <select id="experience-filter">
+                <option value="">All Experience Levels</option>
+                <option value="Entry Level">Entry Level</option>
+                <option value="Mid Level">Mid Level</option>
+                <option value="Senior Level">Senior Level</option>
+            </select>
+            
+            <input type="text" id="search-input" placeholder="Search jobs...">
+        </div>
+        
+        <div class="jobs-container" id="jobs-container">
+            <!-- Jobs will be loaded here dynamically -->
+            <div class="no-jobs">
+                <p>Loading job opportunities...</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <h2>Follow Us on</h2>
+    <nav>
+        <a href="#">facebook</a>
+        
+        <a href="#">twitter</a>
+        
+    </nav>
+    </footer>
+    
+    <script>
+        const firebaseConfig = {
+            databaseURL: "https://adding-data-51ab6-default-rtdb.asia-southeast1.firebasedatabase.app/"
+        };
+        
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+        
+      
+     
+        
+      
+        function loadJobs() {
+            const jobsRef = database.ref('jobs');
+            const jobsContainer = document.getElementById('jobs-container');
+            
+            jobsRef.once('value').then((snapshot) => {
+                const jobsData = snapshot.val() || sampleJobs;
+                displayJobs(jobsData);
+                
+              
+                if (!snapshot.val()) {
+                    jobsRef.set(sampleJobs);
+                }
+            }).catch((error) => {
+                console.error("Error loading jobs:", error);
+               
+                displayJobs(sampleJobs);
+            });
+        }
+        
+        // Display jobs in the UI
+        function displayJobs(jobs) {
+            const jobsContainer = document.getElementById('jobs-container');
+            jobsContainer.innerHTML = '';
+            
+            if (!jobs || Object.keys(jobs).length === 0) {
+                jobsContainer.innerHTML = `
+                    <div class="no-jobs">
+                        <p>No job opportunities available at the moment.</p>
+                        <p>Please check back later!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+           
+            const jobsArray = Object.entries(jobs).map(([id, job]) => ({ id, ...job }));
+            jobsArray.sort((a, b) => new Date(b.posted) - new Date(a.posted));
+            
+            jobsArray.forEach(job => {
+                const jobCard = document.createElement('div');
+                jobCard.className = 'job-card';
+                jobCard.innerHTML = `
+                    <h3 class="job-title">${job.title}</h3>
+                    <p class="job-company">${job.company} • ${job.location}</p>
+                    <div class="job-details">
+                        <span>${job.type}</span>
+                        <span>${job.experience}</span>
+                        <span>${job.salary}</span>
+                    </div>
+                    <p class="job-description">${job.description}</p>
+                    <a href="${job.applyLink}" class="apply-btn">Apply Now</a>
+                `;
+                jobsContainer.appendChild(jobCard);
+            });
+        }
+        
+        // Filter jobs based on selections
+        function filterJobs() {
+            const typeFilter = document.getElementById('job-type-filter').value.toLowerCase();
+            const expFilter = document.getElementById('experience-filter').value.toLowerCase();
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            
+            const jobCards = document.querySelectorAll('.job-card');
+            
+            jobCards.forEach(card => {
+                const type = card.querySelector('.job-details span:nth-child(1)').textContent.toLowerCase();
+                const exp = card.querySelector('.job-details span:nth-child(2)').textContent.toLowerCase();
+                const title = card.querySelector('.job-title').textContent.toLowerCase();
+                const company = card.querySelector('.job-company').textContent.toLowerCase();
+                
+                const typeMatch = !typeFilter || type.includes(typeFilter);
+                const expMatch = !expFilter || exp.includes(expFilter);
+                const searchMatch = !searchTerm || 
+                    title.includes(searchTerm) || 
+                    company.includes(searchTerm);
+                
+                if (typeMatch && expMatch && searchMatch) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        // Set up event listeners for filters
+        document.getElementById('job-type-filter').addEventListener('change', filterJobs);
+        document.getElementById('experience-filter').addEventListener('change', filterJobs);
+        document.getElementById('search-input').addEventListener('input', filterJobs);
+        
+      
+        window.addEventListener('DOMContentLoaded', loadJobs);
+    </script>
+</body>
+</html>
