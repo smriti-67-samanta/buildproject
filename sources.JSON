@@ -1,0 +1,106 @@
+{
+  "resources": {
+    "pdfs": {
+      "smriti": {
+        "title": "Smriti Document",
+        "description": "Scanned document uploaded by the user.",
+        "imageUrl": "https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "downloadUrl": "smriti.pdf",
+        "type": "pdf",
+        "createdAt": 1689984000000
+      },
+      "interview_handbook": {
+        "title": "Interview Preparation Handbook",
+        "description": "Master your next interview with these proven techniques and practice questions.",
+        "imageUrl": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "downloadUrl": "smriti.pdf",
+        "type": "pdf",
+        "createdAt": 1689897600000
+      },
+      "cover_letter_templates": {
+        "title": "Cover Letter Templates",
+        "description": "Professional templates for various industries and job types.",
+        "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "downloadUrl": "smriti.pdf",
+        "type": "pdf",
+        "createdAt": 1689811200000
+      },
+      "salary_negotiation": {
+        "title": "Salary Negotiation Guide",
+        "description": "Learn how to negotiate your worth with confidence.",
+        "imageUrl": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "downloadUrl":  "smriti.pdf",
+        "type": "pdf",
+        "createdAt": 1689724800000
+      }
+    },
+    "articles": {
+      "career_growth": {
+        "title": "5 Steps to Accelerate Your Career",
+        "description": "Learn actionable strategies to fast-track your professional development.",
+        "imageUrl": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "articleUrl":  "smriti.pdf",
+        "type": "article",
+        "createdAt": 1689638400000
+      },
+      "professional_networking": {
+        "title": "The Art of Professional Networking",
+        "description": "Build meaningful connections that can transform your career trajectory.",
+        "imageUrl": "https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "articleUrl":  "smriti.pdf",
+        "type": "article",
+        "createdAt": 1689552000000
+      },
+      "remote_work": {
+        "title": "Mastering Remote Work",
+        "description": "Tips for productivity and work-life balance in remote positions.",
+        "imageUrl": "https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "articleUrl":  "smriti.pdf",
+        "type": "article",
+        "createdAt": 1689465600000
+      },
+      "leadership_skills": {
+        "title": "Developing Leadership Skills",
+        "description": "Essential qualities and practices for emerging leaders.",
+        "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "articleUrl":  "smriti.pdf",
+        "type": "article",
+        "createdAt": 1689379200000
+      }
+    },
+    "images": {
+      "teamwork_infographic": {
+        "title": "Teamwork Infographic",
+        "description": "Visual guide to effective collaboration in professional settings.",
+        "imageUrl": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "downloadUrl": "IMG_20171124_105838765.jpg",
+        "type": "image",
+        "createdAt": 1689292800000
+      },
+      "time_management": {
+        "title": "Time Management Chart",
+        "description": "Visual tools to help you maximize productivity and efficiency.",
+        "imageUrl": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "downloadUrl": "IMG_20171124_105838765.jpg",
+        "type": "image",
+        "createdAt": 1689206400000
+      },
+      "career_path": {
+        "title": "Career Path Visualization",
+        "description": "Map your professional journey with this visual guide.",
+        "imageUrl": "https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "downloadUrl": "IMG_20171124_105838765.jpg",
+        "type": "image",
+        "createdAt": 1689120000000
+      },
+      "skills_development": {
+        "title": "Skills Development Roadmap",
+        "description": "Visual guide to acquiring in-demand professional skills.",
+        "imageUrl": "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "downloadUrl": "IMG_20171124_105838765.jpg",
+        "type": "image",
+        "createdAt": 1689033600000
+      }
+    }
+  }
+}
