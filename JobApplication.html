@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="file"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        input[type="submit"] {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+            display: none;
+        }
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .success-message i {
+            font-size: 24px;
+            margin-bottom: 10px;
+            display: block;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div id="success-message" class="success-message">
+            <i class="fas fa-check-circle"></i>
+            <h2>Application Submitted Successfully!</h2>
+            <p>Thank you for applying. We will review your application and get back to you soon.</p>
+        </div>
+        
+        <h1 id="form-title">Job Application Form</h1>
+        <form id="application-form" action="#" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" name="full-name" required>
+                <span class="error">Please enter your full name</span>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+                <span class="error">Please enter a valid email address</span>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+                <span class="error">Please enter a valid phone number</span>
+            </div>
+            <div class="form-group">
+                <label for="position">Position Applied For</label>
+                <select id="position" name="position" required>
+                    <option value="">Select a position</option>
+                    <option value="developer">Software Developer</option>
+                    <option value="designer">Graphic Designer</option>
+                    <option value="manager">Project Manager</option>
+                    <option value="other">Other</option>
+                </select>
+                <span class="error">Please select a position</span>
+            </div>
+            <div class="form-group">
+                <label for="resume">Upload Resume</label>
+                <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+                <span class="error">Please upload a valid file (PDF, DOC, DOCX)</span>
+            </div>
+            <div class="form-group">
+                <label for="cover-letter">Cover Letter</label>
+                <textarea id="cover-letter" name="cover-letter" placeholder="Write your cover letter here..."></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit Application">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('application-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+           
+            let isValid = true;
+            const form = this;
+            const inputs = form.querySelectorAll('input[required], select[required]');
+            
+            inputs.forEach(input => {
+                const error = input.nextElementSibling;
+                if (!input.value) {
+                    error.style.display = 'block';
+                    isValid = false;
+                } else {
+                    error.style.display = 'none';
+                }
+            });
+            
+           
+            const email = document.getElementById('email');
+            const emailError = email.nextElementSibling;
+            if (email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+                emailError.style.display = 'block';
+                isValid = false;
+            }
+            
+            
+            const resume = document.getElementById('resume');
+            const resumeError = resume.nextElementSibling;
+            if (resume.files.length > 0) {
+                const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+                if (!allowedTypes.includes(resume.files[0].type)) {
+                    resumeError.style.display = 'block';
+                    isValid = false;
+                }
+            }
+            
+            if (isValid) {
+               
+                form.style.display = 'none';
+                document.getElementById('form-title').style.display = 'none';
+                document.getElementById('success-message').style.display = 'block';
+                
+               
+            }
+        });
+    </script>
+</body>
+</html>
