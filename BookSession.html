@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Career Session Booking</title>
+    <title>CareerPath Pro | Session Booking</title>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
         body {
             background-color: #f5f5f5;
@@ -18,82 +22,96 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
         }
         
-         header {
-            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGTecYz1I7BjwFUiWkt4YUbcPdBnVSGBcBlA&s");
+       header {
+            background-image: url("https://ik.imagekit.io/upgrad1/marketing-platform-assets/new-images%2Fprogram-backgrounds%2Funiversity/careerPlanning_banner__1640775893119.png");
+            padding: 25px 0;
+            width: 100%;
+            position: relative;
             background-size: cover;
             background-position: center;
             padding: 40px 0;
-            width: 100%;
-            position: relative;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          
         }
         
-       
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 0;
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            margin-bottom: 15px;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            color: #ffcc00;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
         }
         
         header h1 {
             color: #ffffff;
             text-align: center;
-            margin: 0;
-            font-size: 2.8rem;
+            margin: 10px 0 0;
+            font-size: 2.5rem;
             font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            position: relative;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-family: 'Playfair Display', serif;
             letter-spacing: 1px;
-            padding-bottom: 10px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-      
         header h1::after {
             content: '';
             display: block;
             width: 80px;
             height: 3px;
             background: #ffcc00;
-            margin: 10px auto 0;
+            margin: 15px auto 0;
+            border-radius: 3px;
         }
        
         nav {
             text-align: center;
             margin-top: 20px;
-            position: relative;
         }
         
         nav a {
-            margin: 0 20px;
+            margin: 0 15px;
             color: #ffffff;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 1.1rem;
-            padding: 8px 12px;
+            padding: 8px 15px;
             border-radius: 4px;
             transition: all 0.3s ease;
             position: relative;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-       
         nav a:hover {
             color: #ffcc00;
             background: rgba(255, 255, 255, 0.1);
-            text-decoration: none;
         }
         
-       
         nav a::after {
             content: '';
             position: absolute;
@@ -110,57 +128,112 @@
             width: 70%;
         }
         
-       
         @media (max-width: 768px) {
+            .header-content {
+                padding: 0 15px;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
             header h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             nav a {
                 margin: 0 10px;
                 font-size: 0.9rem;
-                padding: 6px 8px;
+                padding: 6px 10px;
             }
         }
-         body{
-             background-image: url("https://img.freepik.com/premium-photo/abstract-background-design-images-wallpaper-ai-generated_643360-118716.jpg");
+        
+         body {
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-Lbb-V3th0ONiLH5Fe63dXvkq5aalQoQllmRIDa0Yo66xxGI_tbIxkkpgP3FpNlfE8SM&usqp=CAU");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
            
-        }
-        main {
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+           
         }
         
-        .page-title {
-            color: #2c3e50;
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: #1e3c72;
+        }
+        
+        h1 {
+            font-size: 2.3rem;
+            margin-bottom: 20px;
             text-align: center;
-            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        h1::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #ffcc00, #ff9900);
+            margin: 15px auto 25px;
+            border-radius: 2px;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 25px;
+            text-align: center;
         }
         
         .form-container {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 25px;
         }
         
         .form-section {
             background-color: #f9f9f9;
-            padding: 20px;
+            padding: 25px;
             border-radius: 8px;
-            border-left: 4px solid #4285f4;
+            border-left: 5px solid #1e3c72;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .form-section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .form-section h2 {
             margin-top: 0;
-            color: #2c3e50;
-            font-size: 1.3rem;
+            color: #1e3c72;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-section h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #ffcc00;
+            position: absolute;
+            bottom: 0;
+            left: 0;
         }
         
         .form-group {
@@ -170,81 +243,114 @@
         label {
             display: block;
             margin-bottom: 8px;
-            font-weight: 600;
-            color: #34495e;
+            font-weight: 500;
+            color: #444;
+            font-size: 1rem;
         }
         
         input, select, textarea {
             width: 100%;
-            padding: 10px;
+            padding: 12px 15px;
             border: 1px solid #ddd;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 16px;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+            background-color: #fff;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: #1e3c72;
+            box-shadow: 0 0 0 3px rgba(30, 60, 114, 0.1);
+            outline: none;
         }
         
         textarea {
-            min-height: 100px;
+            min-height: 120px;
             resize: vertical;
         }
         
         .submit-btn {
-            background-color: #34a853;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 4px;
-            font-size: 16px;
+            padding: 15px 30px;
+            border-radius: 6px;
+            font-size: 17px;
             font-weight: 600;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            display: block;
             width: 100%;
             max-width: 200px;
-            margin: 20px auto;
-            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(30, 60, 114, 0.3);
         }
         
         .submit-btn:hover {
-            background-color: #2d8e47;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(30, 60, 114, 0.4);
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
         }
         
         .result-container {
             display: none;
-            margin-top: 30px;
-            padding: 25px;
-            background-color: #e8f0fe;
-            border-radius: 8px;
-            border-left: 4px solid #4285f4;
+            margin-top: 40px;
+            padding: 30px;
+            background-color: #f0f4f9;
+            border-radius: 10px;
+            border-left: 5px solid #1e3c72;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
         }
         
         .meeting-details {
             background-color: white;
-            padding: 20px;
+            padding: 25px;
             margin-bottom: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            border-left: 4px solid #ffcc00;
+        }
+        
+        .meeting-details:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
         
         .meeting-details h3 {
             margin-top: 0;
-            color: #1a73e8;
+            color: #1e3c72;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
         }
         
         .meeting-link {
             margin-top: 15px;
-            padding: 12px;
+            padding: 15px;
             background-color: #e7f3fe;
             border-left: 4px solid #2196F3;
             word-break: break-all;
             border-radius: 4px;
+            font-size: 0.9rem;
         }
         
         .meeting-link a {
             color: #2196F3;
             font-weight: bold;
             text-decoration: none;
+            transition: color 0.3s ease;
         }
         
         .meeting-link a:hover {
+            color: #0d47a1;
             text-decoration: underline;
         }
         
@@ -265,101 +371,78 @@
         .rating-option {
             display: flex;
             align-items: center;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .rating-option:hover {
+            background-color: #f5f5f5;
         }
         
         .rating-option input[type="radio"] {
             width: auto;
             margin-right: 10px;
+            accent-color: #1e3c72;
         }
+        
         footer {
-            background-image: url("https://proventuseducation.com/uploads/blog/16-How-is-a-Biometric-Testing-Beneficial-for-tt.jpg");
-            background-size: cover;
-            background-position: center;
-           
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             padding: 40px 0;
             width: 100%;
             text-align: center;
             margin-top: auto;
-            position: relative;
             color: white;
             box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
         }
-
-      
-       
-
-      
+        
         .footer-content {
-            position: relative;
-            z-index: 1;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
-       
-        footer nav {
+        
+        footer h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+        
+        .social-links {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
+            gap: 20px;
             margin-bottom: 25px;
         }
-
-        footer a {
-            margin: 0 15px;
+        
+        .social-links a {
             color: white;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1rem;
-            padding: 8px 15px;
-            border-radius: 4px;
+            font-size: 1.5rem;
             transition: all 0.3s ease;
-            position: relative;
         }
-
-       
-        footer a:hover {
+        
+        .social-links a:hover {
             color: #ffcc00;
-            text-decoration: none;
-            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
         }
-
-       
-        footer a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 2px;
-            background: #ffcc00;
-            transition: width 0.3s ease;
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 20px;
         }
-
-        footer a:hover::after {
-            width: 70%;
-        }
-         @media (max-width: 768px) {
-            footer nav {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            footer a {
-                margin: 5px 0;
-            }
-        }
-       
+        
         .error {
-            color: #d93025;
+            color: #e53935;
             font-size: 14px;
             margin-top: 5px;
+            font-weight: 500;
         }
         
         .error-input {
-            border-color: #d93025;
+            border-color: #e53935;
+            box-shadow: 0 0 0 2px rgba(229, 57, 53, 0.2);
         }
         
         #loading {
@@ -367,35 +450,96 @@
             text-align: center;
             padding: 20px;
             margin: 20px 0;
+            color: #1e3c72;
+            font-size: 1.1rem;
+        }
+        
+        #loading i {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #1e3c72;
+            display: block;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
         #error {
             display: none;
             background-color: #fce8e6;
             color: #d93025;
-            padding: 15px;
+            padding: 20px;
             margin: 20px 0;
-            border-radius: 4px;
+            border-radius: 8px;
             text-align: center;
+            border-left: 4px solid #d93025;
+        }
+        
+        #error h3 {
+            color: #d93025;
+            margin-top: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+       
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 15px;
+            padding-right: 40px;
+        }
+        
+       
+        @media (max-width: 768px) {
+            main {
+                padding: 20px;
+                margin: 20px auto;
+            }
+            
+            .form-section {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .submit-btn {
+                padding: 12px 20px;
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Make Your Career Bright</h1>
-        <nav>
-            <a href="Home2.html">Home</a>
-            <a href="BookSession.html">Book Session</a>
-            <a href="Library2.html">Library</a>
-            <a href="JobBoard.html">Job Board</a>
-            <a href="Contact Information.html">Contact Us</a>
-            <a href="logout.html">Log Out</a>
-        </nav>
+        <div class="header-content">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="logo-text">CareerPath Pro</div>
+            </a>
+            <h1>Make Your Career Bright</h1>
+            <nav>
+                <a href="Home2.html"><i class="fas fa-home"></i> Home</a>
+                <a href="BookSession.html"><i class="fas fa-calendar-check"></i> Book Session</a>
+                <a href="Library2.html"><i class="fas fa-book"></i> Library</a>
+                <a href="JobBoard.html"><i class="fas fa-search"></i> Job Board</a>
+                <a href="Contact Information.html"><i class="fas fa-envelope"></i> Contact Us</a>
+                <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+            </nav>
+        </div>
     </header>
     
     <main>
-        <h1 class="page-title">Career Session Booking</h1>
-        <p style="text-align: center;">Schedule a personalized career counseling session with our experts</p>
+        <h1>Career Session Booking</h1>
+        <p>Schedule a personalized career counseling session with our experts</p>
         
         <div id="error">
             <h3>Error Submitting Form</h3>
@@ -403,46 +547,47 @@
         </div>
         
         <div id="loading">
+            <i class="fas fa-spinner"></i>
             <p>Submitting your information and scheduling your meeting, please wait...</p>
         </div>
         
         <div id="result-container" class="result-container">
             <div class="meeting-details">
-                <h3>Thank you for booking a session!</h3>
+                <h3><i class="fas fa-check-circle" style="color: #4CAF50; margin-right: 10px;"></i> Thank you for booking a session!</h3>
                 <p>Your session has been successfully scheduled.</p>
-                <p><strong>Scheduled Date:</strong> <span id="meeting-date"></span></p>
-                <p><strong>Scheduled Time:</strong> <span id="meeting-time"></span></p>
+                <p><strong><i class="fas fa-calendar-day" style="color: #1a73e8;"></i> Scheduled Date:</strong> <span id="meeting-date"></span></p>
+                <p><strong><i class="fas fa-clock" style="color: #1a73e8;"></i> Scheduled Time:</strong> <span id="meeting-time"></span></p>
                 <div class="meeting-link">
-                    <span class="calendar-icon">📅</span>
+                    <span class="calendar-icon"><i class="fas fa-video"></i></span>
                     <strong>Meeting Link:</strong> 
                     <a id="meeting-url" href="#" target="_blank">Join Meeting</a>
                 </div>
-                <p style="margin-top: 15px;">A confirmation email with these details has been sent to <span id="confirmation-email"></span>.</p>
+                <p style="margin-top: 15px;"><i class="fas fa-envelope" style="color: #1a73e8;"></i> A confirmation email with these details has been sent to <span id="confirmation-email" style="font-weight: 500;"></span>.</p>
             </div>
         </div>
         
         <form id="bookingForm" class="form-container">
             <div class="form-section">
-                <h2>Personal Information</h2>
+                <h2><i class="fas fa-user"></i> Personal Information</h2>
                 <div class="form-group">
                     <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="name" required placeholder="John Doe">
                     <div id="name-error" class="error"></div>
                 </div>
                 <div class="form-group">
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" required placeholder="john@example.com">
                     <div id="email-error" class="error"></div>
                 </div>
                 <div class="form-group">
                     <label for="age">Age</label>
-                    <input type="number" id="age" name="age" min="18" max="100" required>
+                    <input type="number" id="age" name="age" min="18" max="100" required placeholder="25">
                     <div id="age-error" class="error"></div>
                 </div>
             </div>
             
             <div class="form-section">
-                <h2>Education & Background</h2>
+                <h2><i class="fas fa-graduation-cap"></i> Education & Background</h2>
                 <div class="form-group">
                     <label for="education">Highest Educational Qualification</label>
                     <select id="education" name="education" required>
@@ -458,20 +603,20 @@
                 </div>
                 <div class="form-group">
                     <label for="hobby">Hobbies/Interests</label>
-                    <input type="text" id="hobby" name="hobby">
+                    <input type="text" id="hobby" name="hobby" placeholder="e.g., Photography, Coding, Sports">
                 </div>
                 <div class="form-group">
                     <label for="knack">Special Skills/Talents</label>
-                    <input type="text" id="knack" name="knack">
+                    <input type="text" id="knack" name="knack" placeholder="e.g., Public Speaking, Graphic Design">
                 </div>
                 <div class="form-group">
                     <label for="experience">Work Experience (in years)</label>
-                    <input type="number" id="experience" name="experience" min="0" max="50" step="0.5">
+                    <input type="number" id="experience" name="experience" min="0" max="50" step="0.5" placeholder="0">
                 </div>
             </div>
             
             <div class="form-section">
-                <h2>Session Details</h2>
+                <h2><i class="fas fa-calendar-alt"></i> Session Details</h2>
                 <div class="form-group">
                     <label for="sessionDate">Preferred Date</label>
                     <input type="date" id="sessionDate" name="sessionDate" required min="">
@@ -494,12 +639,12 @@
                 </div>
             </div>
             
-            <button type="submit" class="submit-btn">Book Session</button>
+            <button type="submit" class="submit-btn"><i class="fas fa-calendar-check"></i> Book Session</button>
         </form>
         
         <form id="feedbackForm" class="form-container" style="margin-top: 40px; display: none;">
             <div class="form-section">
-                <h2>Session Feedback</h2>
+                <h2><i class="fas fa-comment-alt"></i> Session Feedback</h2>
                 <div class="form-group">
                     <label>How would you rate your session?</label>
                     <div class="rating-container">
@@ -529,28 +674,35 @@
                     <label for="feedback-message">Your Feedback</label>
                     <textarea id="feedback-message" name="feedback-message" rows="4" placeholder="Please share your thoughts about the session..."></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Submit Feedback</button>
+                <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Submit Feedback</button>
             </div>
         </form>
     </main>
 
     <footer>
-        <h2>Follow Us on</h2>
-    <nav>
-        <a href="#">facebook</a>
-        
-        <a href="#">twitter</a>
-       
-    </nav>
+        <div class="footer-content">
+            <h2>Follow Us On</h2>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; 2023 CareerPath Pro. All Rights Reserved.
+            </div>
+        </div>
     </footer>
     
     <script>
-      
+     
         document.addEventListener('DOMContentLoaded', function() {
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('sessionDate').min = today;
         });
 
+      
         const firebaseConfig = {
             databaseURL: "https://authentication-453d8-default-rtdb.asia-southeast1.firebasedatabase.app/"
         };
@@ -558,10 +710,11 @@
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
         
+       
         document.getElementById('bookingForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Validate form
+         
             let isValid = true;
             const name = document.getElementById('name');
             const email = document.getElementById('email');
@@ -570,12 +723,12 @@
             const sessionDate = document.getElementById('sessionDate');
             const sessionTime = document.getElementById('sessionTime');
             
-         
+           
             document.querySelectorAll('.error').forEach(el => el.textContent = '');
             document.querySelectorAll('input, select').forEach(el => el.classList.remove('error-input'));
             document.getElementById('error').style.display = 'none';
             
-       
+          
             if (!name.value.trim()) {
                 document.getElementById('name-error').textContent = 'Please enter your name';
                 name.classList.add('error-input');
@@ -593,7 +746,7 @@
                 isValid = false;
             }
             
-        
+           
             if (!age.value) {
                 document.getElementById('age-error').textContent = 'Please enter your age';
                 age.classList.add('error-input');
@@ -618,7 +771,7 @@
                 isValid = false;
             }
             
-         
+           
             if (!sessionTime.value) {
                 document.getElementById('time-error').textContent = 'Please select a session time';
                 sessionTime.classList.add('error-input');
@@ -626,15 +779,15 @@
             }
             
             if (isValid) {
-             
+               
                 document.getElementById('loading').style.display = 'block';
                 
-             
+               
                 const selectedTime = sessionTime.value.split('-');
                 const meetingStartTime = selectedTime[0];
                 const meetingEndTime = selectedTime[1];
                 
-                
+               
                 const meetingId = 'meet-' + Math.random().toString(36).substring(2, 9);
                 const meetingUrl = `https://meet.example.com/${meetingId}`;
                 
@@ -655,51 +808,51 @@
                     timestamp: new Date().toISOString()
                 };
                 
-                // Save to Firebase
+               
                 const newUserRef = database.ref('bookings').push();
                 newUserRef.set(userData)
                     .then(() => {
-                        // Hide loading indicator
+                      
                         document.getElementById('loading').style.display = 'none';
                         
-                     
+                       
                         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
                         const displayDate = new Date(sessionDate.value).toLocaleDateString('en-US', options);
                         
-                        // Show confirmation with meeting details
+                       
                         document.getElementById('confirmation-email').textContent = email.value;
                         document.getElementById('meeting-date').textContent = displayDate;
                         document.getElementById('meeting-time').textContent = `${meetingStartTime} to ${meetingEndTime}`;
                         document.getElementById('meeting-url').href = meetingUrl;
                         document.getElementById('meeting-url').textContent = meetingUrl;
                         
-                        // Show results and hide form
+                      
                         document.getElementById('result-container').style.display = 'block';
                         document.getElementById('bookingForm').style.display = 'none';
                         document.getElementById('feedbackForm').style.display = 'block';
                         
-                    
+                       
                         document.getElementById('result-container').scrollIntoView({ behavior: 'smooth' });
                         
-                       
+                        
                         console.log('Would send confirmation email to:', email.value);
                     })
                     .catch((error) => {
-                  
+                      
                         document.getElementById('loading').style.display = 'none';
                         
-                 
+                       
                         document.getElementById('error').style.display = 'block';
                         document.getElementById('error-message').textContent = error.message || 
                             'There was an error saving your information. Please try again.';
                         
-                
+                        
                         document.getElementById('error').scrollIntoView({ behavior: 'smooth' });
                     });
             }
         });
         
-        // Feedback form submission
+        
         document.getElementById('feedbackForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
