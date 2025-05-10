@@ -481,42 +481,40 @@
         }
         
       
-        function displayJobs(jobs) {
-            const jobsContainer = document.getElementById('jobs-container');
-            jobsContainer.innerHTML = '';
-            
-            if (!jobs || Object.keys(jobs).length === 0) {
-                jobsContainer.innerHTML = `
-                    <div class="no-jobs">
-                        <p>No job opportunities available at the moment.</p>
-                        <p>Please check back later!</p>
-                    </div>
-                `;
-                return;
-            }
-            
-          
-            const jobsArray = Object.entries(jobs).map(([id, job]) => ({ id, ...job }));
-            jobsArray.sort((a, b) => new Date(b.posted) - new Date(a.posted));
-            
-            jobsArray.forEach(job => {
-                const jobCard = document.createElement('div');
-                jobCard.className = 'job-card';
-                jobCard.innerHTML = `
-                    <h3 class="job-title">${job.title}</h3>
-                    <p class="job-company">${job.company} • ${job.location}</p>
-                    <div class="job-details">
-                        <span><i class="fas fa-briefcase"></i> ${job.type}</span>
-                        <span><i class="fas fa-chart-line"></i> ${job.experience}</span>
-                        <span><i class="fas fa-dollar-sign"></i> ${job.salary}</span>
-                    </div>
-                    <p class="job-description">${job.description}</p>
-                    <a href="${job.applyLink}" class="apply-btn"><i class="fas fa-paper-plane"></i> Apply Now</a>
-                `;
-                jobsContainer.appendChild(jobCard);
-            });
-        }
-        
+       function displayJobs(jobs) {
+    const jobsContainer = document.getElementById('jobs-container');
+    jobsContainer.innerHTML = '';
+    
+    if (!jobs || Object.keys(jobs).length === 0) {
+        jobsContainer.innerHTML = `
+            <div class="no-jobs">
+                <p>No job opportunities available at the moment.</p>
+                <p>Please check back later!</p>
+            </div>
+        `;
+        return;
+    }
+    
+    const jobsArray = Object.entries(jobs).map(([id, job]) => ({ id, ...job }));
+    jobsArray.sort((a, b) => new Date(b.posted) - new Date(a.posted));
+    
+    jobsArray.forEach(job => {
+        const jobCard = document.createElement('div');
+        jobCard.className = 'job-card';
+        jobCard.innerHTML = `
+            <h3 class="job-title">${job.title}</h3>
+            <p class="job-company">${job.company} • ${job.location}</p>
+            <div class="job-details">
+                <span><i class="fas fa-briefcase"></i> ${job.type}</span>
+                <span><i class="fas fa-chart-line"></i> ${job.experience}</span>
+                <span><i class="fas fa-dollar-sign"></i> ${job.salary}</span>
+            </div>
+            <p class="job-description">${job.description}</p>
+            <a href="JobApplication.html" class="apply-btn"><i class="fas fa-paper-plane"></i> Apply Now</a>
+        `;
+        jobsContainer.appendChild(jobCard);
+    });
+}
        
         function filterJobs() {
             const typeFilter = document.getElementById('job-type-filter').value.toLowerCase();
