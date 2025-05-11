@@ -8,6 +8,8 @@ CareerPath Pro is a digital platform designed to empower individuals at every st
  Fullstack
 
  ## Video Walkthrough of the project
+ 1.https://youtu.be/cv16z85An0E?si=29BzAxvRq4I9lnep
+ 2.https://youtu.be/AMwL6DaeJ1g?si=SWPuiOTlygjLv6HC
 
  ## Features
   Personalized Career Guidance
